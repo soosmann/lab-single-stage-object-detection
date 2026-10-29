@@ -1,0 +1,2 @@
+# Install the lab and the notebook environment from pyproject.toml.
+-e .[notebooks]

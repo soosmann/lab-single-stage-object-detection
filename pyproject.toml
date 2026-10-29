@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uam-object-detection-lab"
+version = "0.1.0"
+description = "A UAM lab on single-stage object detection with MobileNetV2 and PASCAL VOC 2007"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.2,<3",
+    "torchvision>=0.17,<1",
+    "numpy>=1.24,<3",
+    "matplotlib>=3.7,<4",
+    "Pillow>=9.5",
+    "opencv-python-headless>=4.8,<5",
+    "torchsummary==1.5.1",
+]
+
+[project.optional-dependencies]
+notebooks = ["jupyterlab>=4,<5", "ipykernel>=6,<8"]
+dev = ["ruff>=0.9,<1"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["a5_helper", "single_stage_detector"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["eecs598*"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+include = ["src/single_stage_detector.py", "src/a5_helper.py", "scripts/*.py", "tests/*.py"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
